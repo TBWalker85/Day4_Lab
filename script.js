@@ -11,14 +11,16 @@ function clickButton() {
     var divNumber = String(document.getElementsByClassName('newSquares').length);
     var newBox = document.createElement('div');
     newBox.id = divNumber;
+    divNumber = parseInt(divNumber, 10);
+    var thisDiv = divNumber;
+    var nextDiv = (divNumber + 1);
+    var prevDiv = (divNumber - 1);
     newBox.className = 'newSquares';
     newBox.addEventListener('click', randomColor);
     newBox.addEventListener('mouseenter', mouseEnter);
     newBox.addEventListener('mouseleave', mouseLeave);
     newBox.addEventListener('dblclick', boxGone);
     document.body.appendChild(newBox);
-    
-}
 
 function randomColor(e) {
     var letters = '0123456789ABCDEF'.split('');
@@ -39,15 +41,13 @@ function mouseLeave(e) {
 
 function boxGone(e) {
     console.log('im working');
-    var x = e.target.id;
-    var y = x+1;
-    var z = x-1;
-    if (x%2==0) {
-       y.parentNode.removeChild(y);
-     } else if (x%2>0) {
-       z.parentNode.removeChild(z);
+    if (thisDiv%2===0) {
+       document.getElementById(nextDiv).remove();
+     } else if (thisDiv%2>0) {
+       document.getElementById(prevDiv).remove();
      }
      else {
          alert('the element does not exist');
      }
+}
 }
