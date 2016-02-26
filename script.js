@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.className = 'myButton';
     button.onclick = clickButton;
     document.body.appendChild(button);
+});    
 
 function clickButton() {
     var divNumber = String(document.getElementsByClassName('newSquares').length);
@@ -47,9 +48,13 @@ function boxGone(e) {
         e.target.nextElementSibling.remove();
     } else if (x%2>0) {
         e.target.previousElementSibling.remove();
-    } else {
+    } else if (x.previousElementSibling.className === 'myButton') {
         alert('the element does not exist');
-                }
+    }  else if (x.nextElementSibling === null) {
+        alert('the element does not exist');
+    } else {
+        alert ('the element does not exist');
+    }
 }
 //     if (thisDiv < 1) {
 //        alert('the element does not exist');
